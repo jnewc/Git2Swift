@@ -103,7 +103,8 @@ Pod::Spec.new do |s|
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
 
-  s.preserve_paths = "Submodules/CLibgit2/module.modulemap"
+	s.preserve_paths = "module.modulemap"
+	s.module_map = "module.modulemap"
 
 	#s.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/Git2Swift/Submodules/CLibgit2' }
 	s.library = 'git2'

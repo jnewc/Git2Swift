@@ -1,0 +1,12 @@
+framework module Git2Swift {
+  umbrella header "Git2Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module CLibgit2 [system] {
+  header "/usr/local/include/git2.h"
+  link "git2"
+  export *
+}
