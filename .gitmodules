@@ -1,0 +1,3 @@
+[submodule "Submodules/CLibgit2"]
+	path = Submodules/CLibgit2
+	url = git@github.com:damicreabox/CLibgit2.git
