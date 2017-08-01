@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Git2Swift"
-  s.version      = "0.4.0"
+  s.version      = "0.4.1"
   s.summary      = "A short description of Git2Swift."
 
   # This description is used to generate tags and improve search results.
@@ -37,9 +37,8 @@ Pod::Spec.new do |s|
   #  Licensing your code is important. See http://choosealicense.com for more info.
   #  CocoaPods will detect a license file if there is a named LICENSE*
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
-  #
 
-	s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+	s.license      = { :type => "MIT" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -63,12 +62,11 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # s.platform     = :ios
+  s.platform     = :osx
   # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
-  # s.osx.deployment_target = "10.7"
+  s.osx.deployment_target = "10.12"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
 
@@ -105,11 +103,15 @@ Pod::Spec.new do |s|
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
 
-  s.preserve_paths = "Submodules/**/*.modulemap"
-	s.module_map = "Submodules/**/*.modulemap"
+  s.preserve_paths = "Submodules/CLibgit2/module.modulemap"
 
-	s.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/Git2Swift/Submodules/CLibgit2' }
-	s.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2 $(PODS_ROOT)/Git2Swift/Submodules/CLibgit2' }
+	#s.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/Git2Swift/Submodules/CLibgit2' }
+	s.library = 'git2'
+	s.xcconfig = {
+		'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2 $(PODS_ROOT)/Git2Swift/Submodules/CLibgit2',
+		'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/Git2Swift/Submodules/CLibgit2',
+		'LIBRARY_SEARCH_PATHS' => '/usr/local/lib'
+	}
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
