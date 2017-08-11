@@ -6,6 +6,10 @@
 #  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
 #
 
+pwd = File.dirname(__FILE__)
+
+puts "PATH: #{pwd}"
+
 Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -26,7 +30,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
 		Git2Swift
-                   DESC
+	DESC
 
   s.homepage     = "http://EXAMPLE/Git2Swift"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -103,14 +107,13 @@ Pod::Spec.new do |s|
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
 
-	s.preserve_paths = "module.modulemap"
-	s.module_map = "module.modulemap"
+	s.preserve_paths = "Submodules/CLibgit2/module.modulemap"
 
 	#s.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/Git2Swift/Submodules/CLibgit2' }
 	s.library = 'git2'
-	s.xcconfig = {
-		'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2 $(PODS_ROOT)/Git2Swift/Submodules/CLibgit2',
-		'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/Git2Swift/Submodules/CLibgit2',
+	s.pod_target_xcconfig = {
+		'HEADER_SEARCH_PATHS' => "#{pwd}/Submodules/CLibgit2",
+		'SWIFT_INCLUDE_PATHS' => "#{pwd}/Submodules/CLibgit2",
 		'LIBRARY_SEARCH_PATHS' => '/usr/local/lib'
 	}
 
